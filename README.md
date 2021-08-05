@@ -42,6 +42,9 @@ and tk configuration (tkConfig.sh), below is an example:
 Example
 =====
 
+It is using [tcl-stbimage](https://github.com/ray2501/tcl-stbimage)
+to load image, then test this package.
+
 	package require Tk
 	package require stbimage
 	package require imagebytes
