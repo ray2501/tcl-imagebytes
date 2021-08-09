@@ -13,7 +13,7 @@ This package is to test it.
 Implement commands
 =====
 
-bytesToPhoto bytearray photo width height channel  
+bytesToPhoto bytearray photo width height channels  
 bytesFromPhoto photo  
 
 
@@ -53,15 +53,15 @@ to load image, then test this package.
 	set d [::stbimage::load test.jpg]
 	set width [dict get $d width]
 	set height [dict get $d height]
-	set channel [dict get $d channel]
+	set channels [dict get $d channels]
 	set data [dict get $d data]
 
-	if {$channel != 3 && $channel != 4} {
-		puts "Channel $channel - not supported image."
+	if {$channels < 1 || $channels > 4} {
+		puts "Channel $channels - not supported image."
 		exit
 	}
     # For test to photo function
-	bytesToPhoto $data imgobj $width $height $channel
+	bytesToPhoto $data imgobj $width $height $channels
 
 	label .label
 	.label configure -image imgobj
@@ -71,11 +71,11 @@ to load image, then test this package.
 	set d2 [bytesFromPhoto imgobj]
 	set width [dict get $d2 width]
 	set height [dict get $d2 height]
-	set channel [dict get $d2 channel]
+	set channels [dict get $d2 channels]
 	set data [dict get $d2 data]
-	if {$channel != 4} {
-		puts "channel is not 4."
+	if {$channels < 1 || $channels > 4} {
+		puts "Invalid channels."
 	} else {
-		::stbimage::write tga output.tga $width $height $channel $data
+		::stbimage::write tga output.tga $width $height $channels $data
 	}
 
