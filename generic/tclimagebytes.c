@@ -284,8 +284,8 @@ Imagebytes_Init(Tcl_Interp *interp)
 	return TCL_ERROR;
     }
 
-	Tcl_CreateObjCommand(interp, "bytesToPhoto", BytesToPhoto, NULL, NULL);
-	Tcl_CreateObjCommand(interp, "bytesFromPhoto", BytesFromPhoto, NULL, NULL);
+    Tcl_CreateObjCommand(interp, "bytesToPhoto", BytesToPhoto, NULL, NULL);
+    Tcl_CreateObjCommand(interp, "bytesFromPhoto", BytesFromPhoto, NULL, NULL);
 
     return TCL_OK;
 }
