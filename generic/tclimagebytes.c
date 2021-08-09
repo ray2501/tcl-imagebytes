@@ -33,10 +33,10 @@ static int BytesToPhoto(ClientData dummy, Tcl_Interp *interp, int objc, Tcl_Obj 
     char *photo = NULL;
     int len = 0, length = 0, width = 0, height = 0, channels = 0;
 
-	if (objc != 6) {
-		Tcl_WrongNumArgs(interp, 1, objv, "bytearray photo width height channels");
-		return TCL_ERROR;
-	}
+    if (objc != 6) {
+        Tcl_WrongNumArgs(interp, 1, objv, "bytearray photo width height channels");
+        return TCL_ERROR;
+    }
 
     binary = Tcl_GetByteArrayFromObj(objv[1], (int *) &length);
     if ( !binary || length < 1 ){
@@ -140,9 +140,9 @@ static int BytesFromPhoto(ClientData dummy, Tcl_Interp *interp, int objc, Tcl_Ob
     }
 
     Tk_PhotoGetImage(source, &input);
-	width = input.width;
-	height = input.height;
-	channels = input.pixelSize;
+    width = input.width;
+    height = input.height;
+    channels = input.pixelSize;
 
     if (channels < 1 || channels > 4) {
         Tcl_SetResult(interp, "unsupported number of channels", TCL_STATIC);
@@ -273,12 +273,12 @@ Imagebytes_Init(Tcl_Interp *interp)
 {
 
     if (Tcl_InitStubs(interp, "8.6", 0) == NULL) {
-	return TCL_ERROR;
+        return TCL_ERROR;
     }
 
-	if (Tk_InitStubs(interp, "8.6", 0) == NULL) {
-		return TCL_ERROR;
-	}
+    if (Tk_InitStubs(interp, "8.6", 0) == NULL) {
+        return TCL_ERROR;
+    }
 
     if (Tcl_PkgProvide(interp, PACKAGE_NAME, PACKAGE_VERSION) != TCL_OK) {
 	return TCL_ERROR;
