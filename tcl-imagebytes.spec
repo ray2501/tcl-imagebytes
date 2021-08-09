@@ -5,7 +5,7 @@
 
 Name:          tcl-imagebytes
 Summary:       To and from byte array and Tk photo image
-Version:       0.1
+Version:       0.2
 Release:       0
 License:       MIT
 Group:         Development/Libraries/Tcl
