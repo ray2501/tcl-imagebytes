@@ -31,14 +31,15 @@ static int BytesToPhoto(ClientData dummy, Tcl_Interp *interp, int objc, Tcl_Obj 
     Tk_PhotoImageBlock output;
     unsigned char *binary = NULL;
     char *photo = NULL;
-    int len = 0, length = 0, width = 0, height = 0, channels = 0;
+    Tcl_Size len = 0, length = 0;
+    int width = 0, height = 0, channels = 0;
 
     if (objc != 6) {
         Tcl_WrongNumArgs(interp, 1, objv, "bytearray photo width height channels");
         return TCL_ERROR;
     }
 
-    binary = Tcl_GetByteArrayFromObj(objv[1], (int *) &length);
+    binary = Tcl_GetByteArrayFromObj(objv[1], &length);
     if ( !binary || length < 1 ){
         Tcl_SetResult(interp, "invalid byte array", TCL_STATIC);
         return TCL_ERROR;
@@ -120,7 +121,8 @@ static int BytesFromPhoto(ClientData dummy, Tcl_Interp *interp, int objc, Tcl_Ob
     Tk_PhotoImageBlock input;
     unsigned char *binary = NULL;
     char *photo = NULL;
-    int len = 0, length = 0, width = 0, height = 0, channels = 0;
+    Tcl_Size len = 0;
+    int length = 0, width = 0, height = 0, channels = 0;
     Tcl_Obj *result;
 
     if (objc != 2) {
@@ -272,11 +274,11 @@ DLLEXPORT int
 Imagebytes_Init(Tcl_Interp *interp)
 {
 
-    if (Tcl_InitStubs(interp, "8.6", 0) == NULL) {
+    if (Tcl_InitStubs(interp, TCL_VERSION, 0) == NULL) {
         return TCL_ERROR;
     }
 
-    if (Tk_InitStubs(interp, "8.6", 0) == NULL) {
+    if (Tk_InitStubs(interp, TCL_VERSION, 0) == NULL) {
         return TCL_ERROR;
     }
 
